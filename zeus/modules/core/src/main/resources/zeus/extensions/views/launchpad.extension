@@ -1,0 +1,5 @@
+{
+	"module": "zeus/views/launchpad/view.js",
+	"extensionPoint": "zeus-view",
+	"description": "Launchpad View"
+}

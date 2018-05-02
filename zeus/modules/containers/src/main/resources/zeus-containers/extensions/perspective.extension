@@ -1,0 +1,5 @@
+{
+	"module": "zeus-containers/perspective/containers.js",
+	"extensionPoint": "zeus-perspective",
+	"description": "Containers Perspective"
+}

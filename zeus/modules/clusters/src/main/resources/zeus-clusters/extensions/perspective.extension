@@ -1,0 +1,5 @@
+{
+	"module": "zeus-clusters/perspective/clusters.js",
+	"extensionPoint": "zeus-perspective",
+	"description": "Clusters Perspective"
+}

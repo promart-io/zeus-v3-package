@@ -1,0 +1,8 @@
+{
+	"guid": "zeus",
+	"repository": {
+		"type": "git",
+		"branch": "master",
+		"url": "https://github.com/dirigiblelabs/zeus-v3.git"
+	}
+}
