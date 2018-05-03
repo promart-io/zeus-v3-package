@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>io.dirigible.zeus</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<name>Zeus - Application</name>
+	<artifactId>application</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<properties>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<dirigible.version>3.2.0-SNAPSHOT</dirigible.version>
+	</properties>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>true</failOnMissingWebXml>
+					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+					<warName>ROOT</warName>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<!-- Dirigible - Commons -->
+		<dependency>
+			<groupId>org.eclipse.dirigible</groupId>
+			<artifactId>dirigible-commons-config</artifactId>
+			<version>${dirigible.version}</version>
+		</dependency>
+
+		<!-- Dirigible - API -->
+		<dependency>
+			<groupId>org.eclipse.dirigible</groupId>
+			<artifactId>dirigible-api</artifactId>
+			<version>${dirigible.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.eclipse.dirigible</groupId>
+					<artifactId>dirigible-api-facade-bpm</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.eclipse.dirigible</groupId>
+					<artifactId>dirigible-api-javascript-bpm</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.eclipse.dirigible</groupId>
+					<artifactId>dirigible-api-facade-cms</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.eclipse.dirigible</groupId>
+					<artifactId>dirigible-api-javascript-cms</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Dirigible - Repository -->
+		<dependency>
+			<groupId>org.eclipse.dirigible</groupId>
+			<artifactId>dirigible-repository</artifactId>
+			<version>${dirigible.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.dirigible</groupId>
+			<artifactId>dirigible-repository-local</artifactId>
+			<version>${dirigible.version}</version>
+		</dependency>
+
+		<!-- Dirigible - Database -->
+		<dependency>
+			<groupId>org.eclipse.dirigible</groupId>
+			<artifactId>dirigible-database</artifactId>
+			<version>${dirigible.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.dirigible</groupId>
+			<artifactId>dirigible-database-h2</artifactId>
+			<version>${dirigible.version}</version>
+		</dependency>
+
+		<!-- Dirigible - Core -->
+		<dependency>
+			<groupId>org.eclipse.dirigible</groupId>
+			<artifactId>dirigible-core</artifactId>
+			<version>${dirigible.version}</version>
+		</dependency>
+
+		<!-- Dirigible - Services -->
+		<dependency>
+			<groupId>org.eclipse.dirigible</groupId>
+			<artifactId>dirigible-services</artifactId>
+			<version>${dirigible.version}</version>
+		</dependency>
+
+		<!-- Dirigible - Engine -->
+		<dependency>
+			<groupId>org.eclipse.dirigible</groupId>
+			<artifactId>dirigible-engine</artifactId>
+			<version>${dirigible.version}</version>
+		</dependency>
+
+		<!-- Dirigible - Resources -->
+		<dependency>
+			<groupId>org.eclipse.dirigible</groupId>
+			<artifactId>dirigible-resources</artifactId>
+			<version>${dirigible.version}</version>
+		</dependency>
+
+		<!-- External - JSR API -->
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>jsr250-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- External - Jetty -->
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-servlets</artifactId>
+			<version>9.4.5.v20170502</version>
+		</dependency>
+
+		<!-- Application - Zeus -->
+		<dependency>
+			<groupId>io.dirigible.zeus</groupId>
+			<artifactId>applications</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>clusters</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>containers</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>templates</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+</project>
