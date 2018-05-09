@@ -244,7 +244,7 @@ function LayoutController(viewRegistry, messageHub){
 		if(id){
 			if(!reconstruct){
 				//load from localStorage
-				var savedState = localStorage.getItem('DIRIGIBLE.IDE.GL.state.'+ id);
+				var savedState = localStorage.getItem('ZEUS.DIRIGIBLE.GL.state.'+ id);
 				if(savedState !== null) {
 					this.config = JSON.parse(savedState);
 				}				
@@ -275,7 +275,7 @@ function LayoutController(viewRegistry, messageHub){
 			this.layout.on('stateChanged', function(){
 				//TODO: debounce or do that only with save button! This fires a lot
 				var state = JSON.stringify( this.layout.toConfig() );
-				localStorage.setItem('DIRIGIBLE.IDE.GL.state.'+ id, state );
+				localStorage.setItem('ZEUS.DIRIGIBLE.GL.state.'+ id, state );
 			}.bind(this));			
 		}
 		
