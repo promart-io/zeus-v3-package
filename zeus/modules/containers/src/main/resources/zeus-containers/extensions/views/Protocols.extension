@@ -1,0 +1,5 @@
+{
+	'description': 'Protocols view',
+	'extensionPoint': 'shell-zeus-containers-view',
+	'module': 'zeus-containers/views/Protocols/view.js'
+}

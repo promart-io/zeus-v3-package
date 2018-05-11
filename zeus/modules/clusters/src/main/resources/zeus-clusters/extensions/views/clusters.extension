@@ -1,5 +1,0 @@
-{
-	"module": "zeus-clusters/views/clusters/view.js",
-	"extensionPoint": "zeus-view",
-	"description": "Clusters View"
-}

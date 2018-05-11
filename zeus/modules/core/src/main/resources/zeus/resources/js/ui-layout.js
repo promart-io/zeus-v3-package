@@ -22,17 +22,17 @@ var ViewRegistry = function() {
 			throw Error('Not a function');
 		_factories[name] = func;
 		return this;
-	};
+	}
 	
 	this.factories = function(){
 		return _factories;
-	};
+	}
 	
 	this.view = function(viewid, factory, region, label, settings){
 		if(viewid === undefined)
 			throw Error('Illegal argument for viewid ' + viewid);
 		//get view
-		if(arguments.length === 1)
+		if(arguments.length == 1)
 			return _views[viewid];
 		//set view
 		if(factory === undefined)
@@ -54,13 +54,13 @@ var ViewRegistry = function() {
 			componentName: componentName,
 			componentState: settings,
 			defaultRegionId: region
-		};
+		}
 		return this;
 	};
 	
 	this.views = function(){
 		return _views;
-	};
+	}
 	
 	return this;
 	
@@ -162,7 +162,7 @@ function LayoutController(viewRegistry, messageHub){
 			var item = top.content.find(function(_item){
 				return gridItem(_item, id);
 			});
-			return item && gridItem(item, id);
+			return item && gridItem(item, id)
 		}
 	};
 	
@@ -175,15 +175,16 @@ function LayoutController(viewRegistry, messageHub){
 			if(_gridNode){
 				node = _gridNode;
 				return;//next
-			}
-			var child = this.regions[compId] || views[compId];
-			if(child){
-				child = copy(child);
-				if(!node.content)
-					node.content = [];	
-				if(!node.content.find(function(it){return it.id === child.id}))
-					node.content.push(child);
-				node = child;
+			} else {
+				var child = this.regions[compId] || views[compId];
+				if(child){
+					child = copy(child);
+					if(!node.content)
+						node.content = [];	
+					if(!node.content.find(function(it){return it.id == child.id}))
+						node.content.push(child);
+					node = child;
+				}
 			}
 		}.bind(this));
 	}.bind(this);
@@ -223,7 +224,7 @@ function LayoutController(viewRegistry, messageHub){
 		if(!this.listeners[eventType])
 			return;
 		for (var i = this.listeners[eventType].length - 1; i >= 0; i--) {
-		  if (this.listeners[eventType][i].id === id) {
+		  if (this.listeners[eventType][i].id == id) {
 			var subscriber = this.listeners[eventType][i].handler;
 			this.messageHub.unsibscribe(subscriber);
 			this.listeners[eventType].splice(i, 1);
@@ -244,7 +245,7 @@ function LayoutController(viewRegistry, messageHub){
 		if(id){
 			if(!reconstruct){
 				//load from localStorage
-				var savedState = localStorage.getItem('ZEUS.DIRIGIBLE.GL.state.'+ id);
+				var savedState = localStorage.getItem('DIRIGIBLE.IDE.GL.state.zeus.'+ id);
 				if(savedState !== null) {
 					this.config = JSON.parse(savedState);
 				}				
@@ -275,7 +276,7 @@ function LayoutController(viewRegistry, messageHub){
 			this.layout.on('stateChanged', function(){
 				//TODO: debounce or do that only with save button! This fires a lot
 				var state = JSON.stringify( this.layout.toConfig() );
-				localStorage.setItem('ZEUS.DIRIGIBLE.GL.state.'+ id, state );
+				localStorage.setItem('DIRIGIBLE.IDE.GL.state.zeus.'+ id, state );
 			}.bind(this));			
 		}
 		
@@ -330,7 +331,7 @@ function LayoutController(viewRegistry, messageHub){
 			this.openView('editor');
 			this.layout.root.getItemsById('editor')[0].parent.addChild( newItemConfig );
 		}		
-	};
+	}
 	
 	this.resize = function(){
 		this.layout.updateSize();
@@ -341,10 +342,10 @@ function LayoutController(viewRegistry, messageHub){
 		this.containerEl.empty();
 		this.layout.init(this.containerEl, this.viewNames);
 	};
-}
+};
 
 function uuidv4() {
   return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
 	(c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-  );
+  )
 }

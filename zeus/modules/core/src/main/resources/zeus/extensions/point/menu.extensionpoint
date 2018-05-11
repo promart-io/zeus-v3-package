@@ -1,0 +1,4 @@
+{
+	'description': 'Extension Point for the zeus Menu Providers',
+	'name': 'shell-zeus-menu'
+}

@@ -26,6 +26,7 @@
 		<module>clusters</module>
 		<module>containers</module>
 		<module>core</module>
+		<module>data</module>
 		<module>templates</module>
 	</modules>
 

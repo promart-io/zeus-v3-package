@@ -1,1 +1,8 @@
-{"guid":"zeus-clusters","repository":{"type":"git","branch":"master","url":"https://github.com/dirigiblelabs/zeus-v3-clusters.git"}}
+{
+	"guid": "zeus-clusters",
+	"repository": {
+		"type": "git",
+		"branch": "master",
+		"url": "https://github.com/dirigiblelabs/zeus-v3-clusters.git"
+	}
+}

@@ -55,20 +55,20 @@ angular.module('ideUiCore', ['ngResource'])
 		reload: function(){
 			location.reload();
 		}
-	};
+	}
 }])
 .service('Perspectives', ['$resource', function($resource){
-	return $resource('/services/v3/js/zeus/api/perspectives.js');
+	return $resource('/services/v3/js/zeus/api/shell/perspectives.js');
 }])
 .service('Menu', ['$resource', function($resource){
-	return $resource('/services/v3/js/zeus/api/menu.js');
+	return $resource('/services/v3/js/zeus/api/shell/menu.js');
 }])
 .service('User', ['$http', function($http){
 	return {
 		get: function(){
 			var user = {};
 			$http({
-				url: '../../js/ide/services/user-name.js',
+				url: '/services/v3/js/ide/services/user-name.js',
 				method: 'GET'
 			}).success(function(data){
 				user.name = data;
@@ -83,10 +83,10 @@ angular.module('ideUiCore', ['ngResource'])
 .provider('ViewFactories', function(){
 	var self = this;
 	this.factories = {
-		"frame": function(container, componentState){
-			container.setTitle(componentState.label || 'View');
-				$('<iframe>').attr('src', componentState.path).appendTo(container.getElement().empty());
-		}
+			"frame": function(container, componentState){
+				container.setTitle(componentState.label || 'View');
+					$('<iframe>').attr('src', componentState.path).appendTo(container.getElement().empty());
+			}
 	};
 	this.$get = [function viewFactoriesFactory() {
 		return this.factories;
@@ -104,7 +104,7 @@ angular.module('ideUiCore', ['ngResource'])
 		ViewRegistrySvc.factory(factoryName, ViewFactories[factoryName]);
 	});		
 	var get = function(){
-		return $resource('/services/v3/js/zeus/api/views.js').query().$promise
+		return $resource('/services/v3/js/zeus/api/shell/views.js').query().$promise
 				.then(function(data){
 					data = data.map(function(v){
 						v.id = v.id || v.name.toLowerCase();
@@ -112,7 +112,7 @@ angular.module('ideUiCore', ['ngResource'])
 						v.factory = v.factory || 'frame';
 						v.settings = {
 							"path": v.link
-						};
+						}
 						v.region = v.region || 'left-top';
 						return v;
 					});
@@ -149,21 +149,8 @@ angular.module('ideUiCore', ['ngResource'])
 			}
 			if(!scope.menu && url)
 				loadMenu.call(scope);
-			scope.menuClick = function(item, subItem) {
-				if(item.name === 'Show View'){
-					// open view
-					Layouts.manager.openView(subItem.name.toLowerCase());
-				} else if(item.name === 'Open Perspective'){
-					// open perspective`
-					window.open(subItem.onClick.substring(subItem.onClick.indexOf('(')+2, subItem.onClick.indexOf(',')-1));//TODO: change the menu service ot provide paths instead
-				} else {
-					if (item.event === 'open') {
-						window.open(item.data, '_blank');
-					} else {
-						//eval(item.onClick);
-						messageHub.send(item.event, item.data, true);	
-					}
-				}
+			scope.menuClick = function(item) {
+				Layouts.manager.openView(item.id);
 			};
 			scope.selectTheme = function(themeName){
 				Theme.changeTheme(themeName);
@@ -173,7 +160,7 @@ angular.module('ideUiCore', ['ngResource'])
 			scope.user = User.get();
 		},
 		templateUrl: '/services/v3/web/zeus/resources/templates/menu.html'
-	};
+	}
 }])
 .directive('sidebar', ['Perspectives', function(Perspectives){
 	return {

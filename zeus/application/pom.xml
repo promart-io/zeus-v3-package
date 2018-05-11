@@ -37,87 +37,10 @@
 	</build>
 
 	<dependencies>
-		<!-- Dirigible - Commons -->
+		<!-- Dirigible -->
 		<dependency>
 			<groupId>org.eclipse.dirigible</groupId>
-			<artifactId>dirigible-commons-config</artifactId>
-			<version>${dirigible.version}</version>
-		</dependency>
-
-		<!-- Dirigible - API -->
-		<dependency>
-			<groupId>org.eclipse.dirigible</groupId>
-			<artifactId>dirigible-api</artifactId>
-			<version>${dirigible.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.eclipse.dirigible</groupId>
-					<artifactId>dirigible-api-facade-bpm</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.eclipse.dirigible</groupId>
-					<artifactId>dirigible-api-javascript-bpm</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.eclipse.dirigible</groupId>
-					<artifactId>dirigible-api-facade-cms</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.eclipse.dirigible</groupId>
-					<artifactId>dirigible-api-javascript-cms</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<!-- Dirigible - Repository -->
-		<dependency>
-			<groupId>org.eclipse.dirigible</groupId>
-			<artifactId>dirigible-repository</artifactId>
-			<version>${dirigible.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.dirigible</groupId>
-			<artifactId>dirigible-repository-local</artifactId>
-			<version>${dirigible.version}</version>
-		</dependency>
-
-		<!-- Dirigible - Database -->
-		<dependency>
-			<groupId>org.eclipse.dirigible</groupId>
-			<artifactId>dirigible-database</artifactId>
-			<version>${dirigible.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.dirigible</groupId>
-			<artifactId>dirigible-database-h2</artifactId>
-			<version>${dirigible.version}</version>
-		</dependency>
-
-		<!-- Dirigible - Core -->
-		<dependency>
-			<groupId>org.eclipse.dirigible</groupId>
-			<artifactId>dirigible-core</artifactId>
-			<version>${dirigible.version}</version>
-		</dependency>
-
-		<!-- Dirigible - Services -->
-		<dependency>
-			<groupId>org.eclipse.dirigible</groupId>
-			<artifactId>dirigible-services</artifactId>
-			<version>${dirigible.version}</version>
-		</dependency>
-
-		<!-- Dirigible - Engine -->
-		<dependency>
-			<groupId>org.eclipse.dirigible</groupId>
-			<artifactId>dirigible-engine</artifactId>
-			<version>${dirigible.version}</version>
-		</dependency>
-
-		<!-- Dirigible - Resources -->
-		<dependency>
-			<groupId>org.eclipse.dirigible</groupId>
-			<artifactId>dirigible-resources</artifactId>
+			<artifactId>dirigible-group-runtime-javascript</artifactId>
 			<version>${dirigible.version}</version>
 		</dependency>
 
@@ -154,6 +77,11 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>data</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
