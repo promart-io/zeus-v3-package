@@ -24,7 +24,6 @@
 					<th>#</th>
 					<th class="text-capitalize">Name</th>
 					<th class="text-capitalize">Image</th>
-					<th class="text-capitalize">Description</th>
 					<th class="text-capitalize">Protocol</th>
 					<th class="text-capitalize">Port</th>
 					<th></th>
@@ -35,8 +34,7 @@
 					<td>{{$index + 1}}</td>
 					<td>{{next.Name}}</td>
 					<td>{{next.Image}}</td>
-					<td>{{next.Description}}</td>
-					<td>{{next.Protocol}}</td>
+					<td>{{protocolOptionValue(next.Protocol)}}</td>
 					<td>{{next.Port}}</td>
 					<td>
 						<i class="close fa fa-2x fa-remove" ng-click="openDeleteDialog(next)"></i>
@@ -62,23 +60,23 @@
 					<form ng-hide="actionType === 'delete'">
 						<div class="form-group">
 							<label>Name</label>
-							<input type="TEXTBOX" class="form-control" placeholder="Enter name" ng-model="entity.Name">
+							<input type="text" class="form-control" placeholder="Enter name" ng-model="entity.Name">
 						</div>
 						<div class="form-group">
 							<label>Image</label>
-							<input type="TEXTBOX" class="form-control" placeholder="Enter image" ng-model="entity.Image">
-						</div>
-						<div class="form-group">
-							<label>Description</label>
-							<input type="TEXTAREA" class="form-control" placeholder="Enter description" ng-model="entity.Description">
+							<input type="text" class="form-control" placeholder="Enter image" ng-model="entity.Image">
 						</div>
 						<div class="form-group">
 							<label>Protocol</label>
-							<input type="DROPDOWN" class="form-control" placeholder="Enter protocol" ng-model="entity.Protocol">
+							<select class="form-control" ng-options="o.Id as o.Name for o in protocolOptions" ng-model="entity.Protocol"></select>
 						</div>
 						<div class="form-group">
 							<label>Port</label>
-							<input type="TEXTBOX" class="form-control" placeholder="Enter port" ng-model="entity.Port">
+							<input type="number" class="form-control" placeholder="Enter port" ng-model="entity.Port">
+						</div>
+						<div class="form-group">
+							<label>Description</label>
+							<textarea class="form-control" placeholder="Enter description" ng-model="entity.Description"></textarea>
 						</div>
 					</form>
 					<div ng-show="actionType === 'delete'">

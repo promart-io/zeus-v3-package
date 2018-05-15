@@ -3,6 +3,8 @@ angular.module('page').controller('PageController', function ($scope, $http) {
 
 	var api = '/services/v3/js/zeus-containers/api/Protocols.js';
 
+
+
 	function load() {
 		$http.get(api)
 		.success(function(data) {
@@ -64,6 +66,7 @@ angular.module('page').controller('PageController', function ($scope, $http) {
 			alert(JSON.stringify(data));
 		});
 	};
+
 
 	function toggleEntityModal() {
 		$('#entityModal').modal('toggle');

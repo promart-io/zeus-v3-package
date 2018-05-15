@@ -2,6 +2,14 @@ angular.module('page', []);
 angular.module('page').controller('PageController', function ($scope, $http) {
 
 	var api = '/services/v3/js/zeus-containers/api/Containers.js';
+	var protocolOptionsApi = '/services/v3/js/zeus-containers/api/Protocols.js';
+
+	$scope.protocolOptions = [];
+
+	$http.get(protocolOptionsApi)
+	.success(function(data) {
+		$scope.protocolOptions = data;
+	});
 
 	function load() {
 		$http.get(api)
@@ -63,6 +71,15 @@ angular.module('page').controller('PageController', function ($scope, $http) {
 		}).error(function(data) {
 			alert(JSON.stringify(data));
 		});
+	};
+
+	$scope.protocolOptionValue = function(optionKey) {
+		for (var i = 0 ; i < $scope.protocolOptions.length; i ++) {
+			if ($scope.protocolOptions[i].Id === optionKey) {
+				return $scope.protocolOptions[i].Name;
+			}
+		}
+		return null;
 	};
 
 	function toggleEntityModal() {

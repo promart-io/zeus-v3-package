@@ -53,8 +53,8 @@
 				<div class="modal-body">
 					<form ng-hide="actionType === 'delete'">
 						<div class="form-group">
-							<label>${property.widgetLabel}</label>
-							<input type="TEXTBOX" class="form-control" placeholder="Enter ${property.widgetLabel.toLowerCase()}" ng-model="entity.Name">
+							<label>Name</label>
+							<input type="text" class="form-control" placeholder="Enter name" ng-model="entity.Name">
 						</div>
 					</form>
 					<div ng-show="actionType === 'delete'">

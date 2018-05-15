@@ -7,9 +7,9 @@
                 "columns": 
                 [
                     {
-                        "name": "ZC_D",
+                        "name": "ZC_ID",
                         "type": "INTEGER",
-                        "length": "0",
+                        "length": "",
                         "primaryKey": "true",
                         "identity": "",
                         "precision": "",
@@ -18,7 +18,7 @@
                     {
                         "name": "ZC_NAME",
                         "type": "VARCHAR",
-                        "length": "64",
+                        "length": "32",
                         "primaryKey": "false",
                         "identity": "",
                         "precision": "",
@@ -34,18 +34,9 @@
                         "scale": ""
                     },
                     {
-                        "name": "ZC_DESCRIPTION",
-                        "type": "VARCHAR",
-                        "length": "256",
-                        "primaryKey": "false",
-                        "identity": "",
-                        "precision": "",
-                        "scale": ""
-                    },
-                    {
                         "name": "ZC_PROTOCOL",
                         "type": "INTEGER",
-                        "length": "0",
+                        "length": "",
                         "primaryKey": "false",
                         "identity": "",
                         "precision": "",
@@ -55,6 +46,15 @@
                         "name": "ZC_PORT",
                         "type": "INTEGER",
                         "length": "",
+                        "primaryKey": "false",
+                        "identity": "",
+                        "precision": "",
+                        "scale": ""
+                    },
+                    {
+                        "name": "ZC_DESCRIPTION",
+                        "type": "VARCHAR",
+                        "length": "256",
                         "primaryKey": "false",
                         "identity": "",
                         "precision": "",
@@ -70,7 +70,7 @@
                     {
                         "name": "ZCP_ID",
                         "type": "INTEGER",
-                        "length": "0",
+                        "length": "",
                         "primaryKey": "true",
                         "identity": "",
                         "precision": "",
