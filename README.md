@@ -16,7 +16,7 @@
 
 - Deploy:
 
-  `kubectl create -f https://raw.githubusercontent.com/dirigiblelabs/zeus-v3-package/master/zeus.yml`
+  `kubectl create -f https://raw.githubusercontent.com/dirigiblelabs/zeus-v3-package/master/zeus/zeus.yml`
 
 - Access:
 
@@ -26,7 +26,7 @@
 
 - Undeploy:
 
-  `kubectl delete -f https://raw.githubusercontent.com/dirigiblelabs/zeus-v3-package/master/zeus.yml`
+  `kubectl delete -f https://raw.githubusercontent.com/dirigiblelabs/zeus-v3-package/master/zeus/zeus.yml`
 
 - Stop:
 
