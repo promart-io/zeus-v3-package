@@ -8,9 +8,21 @@
 
 ## Kubernetes
 
-1. Deploy on Minikube:
+#### Minikube:
 
+- Start: 
+  
   `kubectl create -f https://raw.githubusercontent.com/dirigiblelabs/zeus-v3-package/master/zeus.yml`
+
+- Access:
+
+  - IP: `minikube ip`
+  - Port: `kubectl get services -n zeus -o go-template='{{range .items}}{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}{{end}}'`
+  - URL: {IP}:{Port}
+
+- Stop:
+
+  `kubectl delete -f https://raw.githubusercontent.com/dirigiblelabs/zeus-v3-package/master/zeus.yml`
 
 ## Docker
 Build an image without uploading it:
