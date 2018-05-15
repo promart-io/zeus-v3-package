@@ -20,7 +20,9 @@
 
 - Access:
 
-  - Get IP: `minikube ip`
+  - Get IP: 
+      
+      `minikube ip`
   - Get port: `kubectl get services -n zeus -o go-template='{{range .items}}{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}{{end}}'`
   - Construct URL: {IP}:{Port}
 
