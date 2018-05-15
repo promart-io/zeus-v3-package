@@ -6,6 +6,12 @@
 
 ## Overview
 
+## Kubernetes
+
+1. Deploy on Minikube:
+
+  `kubectl create -f https://raw.githubusercontent.com/dirigiblelabs/zeus-v3-package/master/zeus.yml`
+
 ## Docker
 Build an image without uploading it:
 
