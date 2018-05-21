@@ -15,12 +15,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<properties>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<dirigible.version>3.2.0-SNAPSHOT</dirigible.version>
-	</properties>
-
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
@@ -37,6 +31,27 @@
 	</build>
 
 	<dependencies>
+
+		<!-- Platform -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+		    <groupId>ch.qos.logback</groupId>
+		    <artifactId>logback-core</artifactId>
+		    <version>${logback.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+		<dependency>
+		    <groupId>ch.qos.logback</groupId>
+		    <artifactId>logback-classic</artifactId>
+		    <version>${logback.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+
 		<!-- Dirigible -->
 		<dependency>
 			<groupId>org.eclipse.dirigible</groupId>
@@ -75,4 +90,13 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
+
+	<properties>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<dirigible.version>3.2.1-SNAPSHOT</dirigible.version>
+		<slf4j.version>1.7.5</slf4j.version>
+		<logback.version>1.2.3</logback.version>
+	</properties>
+
 </project>
