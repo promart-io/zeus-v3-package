@@ -1,19 +1,37 @@
 var daoApi = require('db/v3/dao');
 var dao = daoApi.create({
-	'table': 'ZEUS_TEMPLATES',
+	'table': 'ZEUS_CONTAINERS',
 	'properties': [
 		{
 			'name':  'Id',
-			'column': 'ZT_ID',
+			'column': 'ZC_ID',
 			'type':'INTEGER',
 			'id': true,
 			'required': true
 		},		{
 			'name':  'Name',
-			'column': 'ZT_NAME',
+			'column': 'ZC_NAME',
 			'type':'VARCHAR',
 			'id': false,
-			'required': false
+			'required': true
+		},		{
+			'name':  'Image',
+			'column': 'ZC_IMAGE',
+			'type':'VARCHAR',
+			'id': false,
+			'required': true
+		},		{
+			'name':  'Protocol',
+			'column': 'ZC_PROTOCOL',
+			'type':'INTEGER',
+			'id': false,
+			'required': true
+		},		{
+			'name':  'Port',
+			'column': 'ZC_PORT',
+			'type':'INTEGER',
+			'id': false,
+			'required': true
 		}]
 });
 

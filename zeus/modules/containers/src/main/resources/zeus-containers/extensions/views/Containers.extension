@@ -1,5 +1,0 @@
-{
-	'description': 'Containers view',
-	'extensionPoint': 'shell-zeus-containers-view',
-	'module': 'zeus-containers/views/Containers/view.js'
-}

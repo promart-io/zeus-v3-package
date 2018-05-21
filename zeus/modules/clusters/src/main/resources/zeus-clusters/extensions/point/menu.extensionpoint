@@ -1,4 +1,0 @@
-{
-	'description': 'Extension Point for the zeus-clusters Menu Providers',
-	'name': 'shell-zeus-clusters-menu'
-}

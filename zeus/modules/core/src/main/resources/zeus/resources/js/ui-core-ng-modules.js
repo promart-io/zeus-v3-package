@@ -58,10 +58,13 @@ angular.module('ideUiCore', ['ngResource'])
 	}
 }])
 .service('Perspectives', ['$resource', function($resource){
-	return $resource('/services/v3/js/zeus/api/shell/perspectives.js');
+	return $resource('/services/v3/js/zeus/api/launchpad/perspectives.js');
+}])
+.service('Tiles', ['$resource', function($resource){
+	return $resource('/services/v3/js/zeus/api/launchpad/tiles.js');
 }])
 .service('Menu', ['$resource', function($resource){
-	return $resource('/services/v3/js/zeus/api/shell/menu.js');
+	return $resource('/services/v3/js/zeus/api/launchpad/menu.js');
 }])
 .service('User', ['$http', function($http){
 	return {
@@ -103,8 +106,8 @@ angular.module('ideUiCore', ['ngResource'])
 	Object.keys(ViewFactories).forEach(function(factoryName){
 		ViewRegistrySvc.factory(factoryName, ViewFactories[factoryName]);
 	});		
-	var get = function(){
-		return $resource('/services/v3/js/zeus/api/shell/views.js').query().$promise
+	var get = function(viewsExtensionPoint){
+		return $resource('/services/v3/js/zeus/api/launchpad/views.js').query({'extensionPoint': viewsExtensionPoint}).$promise
 				.then(function(data){
 					data = data.map(function(v){
 						v.id = v.id || v.name.toLowerCase();
@@ -133,21 +136,20 @@ angular.module('ideUiCore', ['ngResource'])
 		manager: undefined
 	};
 }])
-.directive('menu', ['$resource', 'Theme', 'User', 'Layouts', 'messageHub', function($resource, Theme, User, Layouts, messageHub){
+.directive('menu', ['$resource', 'Theme', 'User', 'Layouts', 'Menu', 'messageHub', function($resource, Theme, User, Layouts, Menu, messageHub){
 	return {
 		restrict: 'AE',
 		transclude: true,
 		replace: 'true',
 		scope: {
-			url: '@menuDataUrl',
+			menuExtensionPoint: '@menuExtensionPoint',
 			menu:  '=menuData'
 		},
 		link: function(scope, el, attrs){
-			var url = scope.url;
 			function loadMenu(){
-				scope.menu = $resource(url).query();
+				scope.menu = Menu.query({'extensionPoint': scope.menuExtensionPoint});
 			}
-			if(!scope.menu && url)
+			if(!scope.menu && scope.menuExtensionPoint)
 				loadMenu.call(scope);
 			scope.menuClick = function(item) {
 				Layouts.manager.openView(item.id);
@@ -176,6 +178,20 @@ angular.module('ideUiCore', ['ngResource'])
 		templateUrl: '/services/v3/web/zeus/resources/templates/sidebar.html'
 	}
 }])
+.directive('tiles', ['Tiles', function(Tiles){
+	return {
+		restrict: 'AE',
+		transclude: true,
+		replace: 'true',
+		scope: {
+			active: '@'
+		},
+		link: function(scope, el, attrs){
+			scope.tiles= Tiles.query();
+		},
+		templateUrl: '/services/v3/web/zeus/resources/templates/tiles.html'
+	}
+}])
 .directive('statusBar', ['messageHub', function(messageHub){
 	return {
 		restrict: 'AE',
@@ -194,7 +210,7 @@ angular.module('ideUiCore', ['ngResource'])
 		restrict: 'AE',
 		scope: {
 			viewsLayoutModel: '=',
-			viewsLayoutViews: '@',
+			viewsExtensionPoint: '@viewsExtensionPoint',
 		},
 		link: function(scope, el, attrs){
 			var views;
@@ -205,7 +221,7 @@ angular.module('ideUiCore', ['ngResource'])
 			}
 			var eventHandlers = scope.viewsLayoutModel.events;
 			
-			viewRegistry.get().then(function(registry){
+			viewRegistry.get(scope.viewsExtensionPoint).then(function(registry){
 				scope.layoutManager = new LayoutController(registry);
 				if(eventHandlers){
 					Object.keys(eventHandlers).forEach(function(evtName){

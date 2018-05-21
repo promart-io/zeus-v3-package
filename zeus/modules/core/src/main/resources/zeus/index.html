@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  ~ Copyright (c) 2017 SAP and others.
+  ~ Copyright (c) 2018 SAP and others.
   ~ All rights reserved. This program and the accompanying materials
   ~ are made available under the terms of the Eclipse Public License v1.0
   ~ which accompanies this distribution, and is available at
@@ -8,109 +8,109 @@
   ~ Contributors:
   ~ SAP - initial API and implementation
   -->
-
+ 
 <html lang="en">
 <head>
-
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title>Zeus - Home</title>
-
-	<!-- Twitter Bootstrap with Theme Support -->
-	<link type="text/css" rel="stylesheet" href="/services/v3/core/theme/bootstrap.min.css">
-
-		<!-- GoldenLayout with Theme Support -->
-	<link type="text/css" rel="stylesheet" href="/services/v3/web/resources/goldenlayout/1.5.9/goldenlayout-base.css" />
-	<link type="text/css" rel="stylesheet" href="/services/v3/core/theme/goldenlayout-theme.css" />
-	
-	<!-- Custom IDE Styles -->
-	<link type="text/css" rel="stylesheet" href="/services/v3/core/theme/ide.css" />
-	
-	<!-- FontAwesome icon set -->
-	<link type="text/css" href="/services/v3/web/resources/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-	
-	<link rel="shortcut icon" type="image/png" href="/services/v3/web/resources/images/favicon.png" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+    <title>Eclipse Dirigible &trade; | Operations </title>
+ 
+    <link rel="shortcut icon" type="image/png" href="/services/v3/web/resources/images/favicon.png" />
+               
+                <!-- FontAwesome icon set -->
+    <link type="text/css" href="/services/v3/web/resources/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+                               
+                <!-- Twitter Bootstrap with Theme Support -->
+                <link type="text/css" rel="stylesheet" href="/services/v3/core/theme/bootstrap.min.css">
+ 
+                <!-- GoldenLayout with Theme Support -->
+                <link type="text/css" rel="stylesheet" href="/services/v3/web/resources/goldenlayout/1.5.9/goldenlayout-base.css" />
+                <link type="text/css" rel="stylesheet" href="/services/v3/core/theme/goldenlayout-theme.css" />
+               
+                <!-- Custom IDE Styles -->
+                <link type="text/css" rel="stylesheet" href="/services/v3/core/theme/ide.css" />
 </head>
+ 
+<body ng-app="operations" ng-controller="Controller as c">
+ 
+                <div menu menu-extension-point="launchpad-zeus-menu"></div>
+               	<div view view-extension-point="launchpad-zeus-view"></div>
+                <div class="shell">
+                                <div class="sidebar list-group" sidebar active="Operations"></div>
+                                <div id="operations" class="plane panel">
+                               
+                               
+                               
+<header class="panel panel-info" style="text-align: center; padding: 4em;">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto" style="width: 90%">
+            <h1 class="leading">Eclipse Dirigible - Cloud Development Platform</h1>
+            <h3>providing development tools and runtime environment</h3>
+          </div>
+        </div>
+      </div>
+    </header>
+   
+    
+    
+<div class="container" style="padding: 2em">
+<div class="row">
 
-<body ng-app="launchpad" ng-controller="LaunchpadController">
-	<div menu menu-data-url="/services/v3/js/zeus/api/menu.js"></div>
-	<div class="shell">
-		<div style="margin-top: 3em;">
-			<div ng-repeat="next in launchpad" ng-cloak>
-				<div class="row" style="padding: 1em; background: #5b5b5d; border-radius: 100px;">
-					<div class="col-md-{{item.size}}" ng-repeat="item in next.items">
-						<a href="{{item.location}}">
-							<img src="{{item.image}}" style="border-radius: 100px; width: 100%;">
-						</a>
-						<div class="text-center">
-							<h3><b>{{item.title}}</b></h3>
-							<br>
-							<p>{{item.description}}</p>
-							<br>
-							<a href="{{item.location}}" class="btn btn-lg btn-primary">Go to {{item.title}}</a>
-						</div>
-					</div>
-				</div>
-				<br>
-			</div>
-		</div>
-	</div>
-
-	<!-- jQuery -->
-	<script type="text/javascript" src="/services/v3/web/resources/jquery/2.0.3/jquery.min.js"></script>
-	
-	<!-- Twitter Bootstrap with Theme Support -->
-	<script type="text/javascript" src="/services/v3/web/resources/bootstrap/3.3.7/bootstrap.min.js" async></script>
-	
-	<!-- AngularJS -->
-	<script type="text/javascript" src="/services/v3/web/resources/angular/1.4.7/angular.min.js"></script>
-	<script type="text/javascript" src="/services/v3/web/resources/angular/1.4.7/angular-resource.min.js"></script>
-
-	<!-- GoldenLayout with Theme Support -->
-	<script type="text/javascript" src="/services/v3/web/resources/goldenlayout/1.5.9/goldenlayout.min.js"></script>
-
-	<script type="text/javascript" src="/services/v3/web/zeus/resources/js/message-hub.js"></script>	
-	<script type="text/javascript" src="/services/v3/web/zeus/resources/js/ui-layout.js"></script>
-	<script type="text/javascript" src="/services/v3/web/zeus/resources/js/ui-core-ng-modules.js"></script>
-
-	<script type="text/javascript">
-		angular.module('launchpad', ['ngResource', 'ideUiCore'])
-		.controller('LaunchpadController', ['$scope', function ($scope) {
-
-			$scope.launchpad = [{
-				'items': [{
-					'title': 'Applications',
-					'description': 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.',
-					'image': 'https://mdbootstrap.com/img/Photos/Others/images/43.jpg',
-					'location': '/services/v3/web/zeus-applications/',
-					'size': 4
-				}, {
-					'title': 'Containers',
-					'description': 'Lorem ipsum dolor sit amet.',
-					'image': 'https://mdbootstrap.com/img/Photos/Others/images/32.jpg',
-					'location': '/services/v3/web/zeus-containers/',
-					'size': 4
-				}, {
-					'title': 'Templates',
-					'description': 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-					'image': 'https://mdbootstrap.com/img/Photos/Others/images/51.jpg',
-					'location': '/services/v3/web/zeus-templates/',
-					'size': 4
-				}],
-			}, {
-				'items': [{
-					'title': 'Clusters',
-					'description': 'Duis aute irure dolor in reprehenderit in voluptate velit',
-					'image': 'https://mdbootstrap.com/img/Photos/Others/images/11.jpg',
-					'location': '/services/v3/web/zeus-clusters/',
-					'size': 4
-				}]
-			}];
-		}]);
-	</script>
-	
+  <div tiles></div>
+ 
+</div>
+ 
+<br><br><br>
+<p style="font-size: 1.2em"><a href="http://www.dirigible.io" target="_blank">Eclipse Dirigible ™</a> is a Cloud Development Platform providing development tools and runtime environment. It supports full development life-cycle of on-demand applications by leveraging the in-system programming models and the rapid application development techniques.</p>
+           
+</div>
+           
+            
+            
+                               
+                               
+                                </div>
+                </div>
+                <div class="statusbar" status-bar></div>
+               
+                <!-- jQuery -->
+                <script type="text/javascript" src="/services/v3/web/resources/jquery/2.0.3/jquery.min.js"></script>
+               
+                <!-- Twitter Bootstrap with Theme Support -->
+                <script type="text/javascript" src="/services/v3/web/resources/bootstrap/3.3.7/bootstrap.min.js"></script>
+               
+                <!-- AngularJS -->
+                <script type="text/javascript" src="/services/v3/web/resources/angular/1.4.7/angular.min.js"></script>
+                <script type="text/javascript" src="/services/v3/web/resources/angular/1.4.7/angular-resource.min.js"></script>
+ 
+                <!-- GoldenLayout with Theme Support -->
+                <script type="text/javascript" src="/services/v3/web/resources/goldenlayout/1.5.9/goldenlayout.min.js"></script>
+ 
+                <script type="text/javascript" src="/services/v3/web/zeus/resources/js/message-hub.js"></script>	
+                <script type="text/javascript" src="/services/v3/web/zeus/resources/js/ui-layout.js"></script>
+                <script type="text/javascript" src="/services/v3/web/zeus/resources/js/ui-core-ng-modules.js"></script>
+               
+                <script type="text/javascript">
+                                angular.module('operations', ['ngResource', 'ideUiCore'])
+                                .config(["messageHubProvider", function(messageHubProvider) {
+                                                messageHubProvider.evtNamePrefix = 'operations';
+                                }])          
+                                .controller('Controller', ['Layouts', function (Layouts) {
+                                               
+                                                this.layoutModel = {
+                                                                events: {
+                                                                                'repository.resource.open': function(msg){
+                                                                                                Layouts.manager.openEditor(msg.data.path, msg.data.label, msg.data.contentType, "repository");
+                                                                                },
+                                                                                'fileselected': function(msg){
+                                                                                                Layouts.manager.openEditor(msg.data.path, msg.data.label);
+                                                                                }
+                                                                }
+                                                };
+                                                                               
+                                }]);
+                </script>
 </body>
-
-</html>

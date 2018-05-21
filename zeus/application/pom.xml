@@ -60,21 +60,6 @@
 
 		<!-- Application - Zeus -->
 		<dependency>
-			<groupId>io.dirigible.zeus</groupId>
-			<artifactId>applications</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>clusters</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>containers</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>core</artifactId>
 			<version>${project.version}</version>

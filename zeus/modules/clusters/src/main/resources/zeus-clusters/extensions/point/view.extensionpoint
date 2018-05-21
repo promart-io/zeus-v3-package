@@ -1,4 +1,0 @@
-{
-	'description': 'Extension Point for the zeus-clusters View Providers',
-	'name': 'shell-zeus-clusters-view'
-}

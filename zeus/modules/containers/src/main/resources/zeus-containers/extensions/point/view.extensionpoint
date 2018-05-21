@@ -1,4 +1,0 @@
-{
-	'description': 'Extension Point for the zeus-containers View Providers',
-	'name': 'shell-zeus-containers-view'
-}

@@ -1,5 +1,0 @@
-{
-	'description': 'Clusters menu',
-	'extensionPoint': 'shell-zeus-clusters-menu',
-	'module': 'zeus-clusters/views/Clusters/menu/item.js'
-}

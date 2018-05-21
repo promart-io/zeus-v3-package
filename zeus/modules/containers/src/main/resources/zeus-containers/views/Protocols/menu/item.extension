@@ -1,5 +1,0 @@
-{
-	'description': 'Protocols menu',
-	'extensionPoint': 'shell-zeus-containers-menu',
-	'module': 'zeus-containers/views/Protocols/menu/item.js'
-}
