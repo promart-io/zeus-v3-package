@@ -24,8 +24,9 @@
 	<modules>
 		<module>core</module>
 		<module>data</module>
-		<module>accounts</module>
+		<module>applications</module>
 		<module>templates</module>
+		<module>accounts</module>
 	</modules>
 
 	<properties>
