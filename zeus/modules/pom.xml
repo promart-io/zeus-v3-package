@@ -27,6 +27,7 @@
 		<module>applications</module>
 		<module>templates</module>
 		<module>accounts</module>
+		<module>client-kubernetes</module>
 	</modules>
 
 	<properties>
