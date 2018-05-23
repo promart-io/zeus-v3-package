@@ -94,7 +94,7 @@ metadata:
   name: zeus
   namespace: zeus
 ---
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: zeus
@@ -110,7 +110,7 @@ rules:
     verbs:
     - '*'
 ---
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: zeus
