@@ -23,7 +23,7 @@ var dao = daoApi.create({
 		},		{
 			'name':  'Protocol',
 			'column': 'ZAC_PROTOCOL',
-			'type':'INTEGER',
+			'type':'VARCHAR',
 			'id': false,
 			'required': true
 		},		{

@@ -1,28 +1,22 @@
 var daoApi = require('db/v3/dao');
 var dao = daoApi.create({
-	'table': 'ZEUS_APPLICATIONS',
+	'table': 'ZEUS_APPLICATION_ENDPOINTS',
 	'properties': [
 		{
 			'name':  'Id',
-			'column': 'ZA_ID',
+			'column': 'ZAE_ID',
 			'type':'INTEGER',
 			'id': true,
 			'required': true
 		},		{
-			'name':  'Name',
-			'column': 'ZA_NAME',
+			'name':  'URL',
+			'column': 'ZAE_URL',
 			'type':'VARCHAR',
 			'id': false,
 			'required': true
 		},		{
-			'name':  'Template',
-			'column': 'ZA_TEMPLATE',
-			'type':'INTEGER',
-			'id': false,
-			'required': true
-		},		{
-			'name':  'Cluster',
-			'column': 'ZA_CLUSTER',
+			'name':  'Application',
+			'column': 'ZAE_APPLICATION',
 			'type':'INTEGER',
 			'id': false,
 			'required': true

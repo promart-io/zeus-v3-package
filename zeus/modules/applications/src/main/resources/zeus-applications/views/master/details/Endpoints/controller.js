@@ -4,7 +4,7 @@ angular.module('page')
 	var messageHub = new FramesMessageHub();
 
 	var message = function(evtName, data){
-		messageHub.post({data: data}, 'zeus.zeus-applications.Containers.' + evtName);
+		messageHub.post({data: data}, 'zeus.zeus-applications.Endpoints.' + evtName);
 	};
 
 	var on = function(topic, callback){
@@ -15,7 +15,7 @@ angular.module('page')
 		message: message,
 		on: on,
 		onEntityRefresh: function(callback) {
-			on('zeus.zeus-applications.Containers.refresh', callback);
+			on('zeus.zeus-applications.Endpoints.refresh', callback);
 		},
 		onApplicationsSelected: function(callback) {
 			on('zeus.zeus-applications.Applications.selected', callback);
@@ -27,7 +27,7 @@ angular.module('page')
 }])
 .controller('PageController', function ($scope, $http, $messageHub) {
 
-	var api = '/services/v3/js/zeus-applications/api/Containers.js';
+	var api = '/services/v3/js/zeus-applications/api/Endpoints.js';
 
 	function load() {
 		$http.get(api + '?Application=' + $scope.masterEntityId)

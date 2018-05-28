@@ -10,11 +10,11 @@
 
 exports.getView = function() {
 	return {
-		'id': 'Deployer',
-		'name': 'Deploy',
-		'label': 'Deploy',
+		'id': 'Endpoints',
+		'name': 'Endpoints',
+		'label': 'Endpoints',
 		'factory': 'frame',
-		'region': 'left-top',
-		'link': '/services/v3/web/zeus-deployer/views/Deployer/index.html'
+		'region': 'center-bottom',
+		'link': '/services/v3/web/zeus-applications/views/master/details/Endpoints/index.html'
 	};
 };

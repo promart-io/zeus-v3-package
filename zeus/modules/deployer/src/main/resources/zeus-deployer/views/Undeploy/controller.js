@@ -14,40 +14,31 @@ angular.module('page')
 	return {
 		message: message,
 		on: on,
-		onClusterModified: function(callback) {
-			on('zeus.zeus-accounts.Clusters.modified', callback);
+		onApplicationRefresh: function(callback) {
+			on('zeus.zeus-applications.Applications.refresh', callback);
 		},
-		onTemplateModified: function(callback) {
-			on('zeus.zeus-templates.Templates.modified', callback);
-		}, 
 		messageEntityModified: function() {
 			message('modified');
+		},
+		messageApplicationsRefresh: function() {
+			messageHub.post({data: null}, 'zeus.zeus-applications.Applications.refresh');
 		}
 	};
 }])
 .controller('PageController', function ($scope, $http, $messageHub) {
 
 	var api = '/services/v3/js/zeus-deployer/api/Applications.js';
-	var clusterOptionsApi = '/services/v3/js/zeus-accounts/api/Clusters.js';
-	var templateOptionsApi = '/services/v3/js/zeus-templates/api/Templates.js';
+	var applicationOptionsApi = '/services/v3/js/zeus-applications/api/Applications.js';
 
-	$scope.clusterOptions = [];
+	$scope.applicationOptions = [];
 
-	function clusterOptionsLoad() {
-		$http.get(clusterOptionsApi)
+	function applicationOptionsLoad() {
+		$http.get(applicationOptionsApi)
 		.success(function(data) {
-			$scope.clusterOptions = data;
+			$scope.applicationOptions = data;
 		});
 	}
-	clusterOptionsLoad();
-
-	function templateOptionsLoad() {
-		$http.get(templateOptionsApi)
-		.success(function(data) {
-			$scope.templateOptions = data;
-		});
-	}
-	templateOptionsLoad();
+	applicationOptionsLoad();
 
 	$scope.openNewDialog = function() {
 		$scope.actionType = 'new';
@@ -68,23 +59,22 @@ angular.module('page')
 	};
 
 	$scope.close = function() {
-		load();
 		toggleEntityModal();
 	};
 
-	$scope.create = function() {
-		$http.post(api, JSON.stringify($scope.entity))
+	$scope.delete = function() {
+		$http.delete(api + '/' + $scope.entity.applicationId)
 		.success(function(data) {
 			toggleEntityModal();
 			$messageHub.messageEntityModified();
+			$messageHub.messageApplicationsRefresh();
 		}).error(function(data) {
 			alert(JSON.stringify(data));
 		});
 			
 	};
 
-	$messageHub.onClusterModified(clusterOptionsLoad);
-	$messageHub.onTemplateModified(templateOptionsLoad);
+	$messageHub.onApplicationRefresh(applicationOptionsLoad);
 
 	function toggleEntityModal() {
 		$('#entityModal').modal('toggle');
