@@ -40,7 +40,7 @@
 
 		<content.scm.url>https://github.com/dirigiblelabs/${content.repository.name}</content.scm.url>
 		<content.scm.connection>scm:git:git://github.com/dirigiblelabs/${content.repository.name}.git</content.scm.connection>
-		<content.scm.developerConnection>scm:git:https://github.wdf.sap.corp/RootVM/${content.repository.name}</content.scm.developerConnection>
+		<content.scm.developerConnection>scm:git:https://github.com/dirigiblelabs/${content.repository.name}</content.scm.developerConnection>
 
 		<content.scm.server>github</content.scm.server>
 		<content.scm.checkoutDirectory>target</content.scm.checkoutDirectory>
