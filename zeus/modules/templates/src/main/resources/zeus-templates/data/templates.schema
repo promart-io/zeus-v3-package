@@ -93,7 +93,7 @@
                         "scale": ""
                     },
                     {
-                        "name": "ZTS_PROTOCOL",
+                        "name": "ZTS_TYPE",
                         "type": "INTEGER",
                         "length": "0",
                         "primaryKey": "false",
@@ -122,12 +122,12 @@
                 ]
             },
             {
-                "name": "ZEUS_TEMPLATE_SERVICE_PROTOCOLS",
+                "name": "ZEUS_TEMPLATE_SERVICE_TYPES",
                 "type": "TABLE",
                 "columns": 
                 [
                     {
-                        "name": "ZTSP_ID",
+                        "name": "ZTST_ID",
                         "type": "INTEGER",
                         "length": "0",
                         "primaryKey": "true",
@@ -136,7 +136,7 @@
                         "scale": ""
                     },
                     {
-                        "name": "ZTSP_NAME",
+                        "name": "ZTST_NAME",
                         "type": "VARCHAR",
                         "length": "20",
                         "primaryKey": "false",

@@ -36,7 +36,7 @@
                     {
                         "name": "ZP_EMAIL",
                         "type": "VARCHAR",
-                        "length": "20",
+                        "length": "64",
                         "primaryKey": "false",
                         "identity": "false",
                         "precision": "",
@@ -45,7 +45,7 @@
                     {
                         "name": "ZP_ADDRESS",
                         "type": "VARCHAR",
-                        "length": "20",
+                        "length": "64",
                         "primaryKey": "false",
                         "identity": "false",
                         "precision": "",
@@ -131,7 +131,7 @@
                     {
                         "name": "ZC_TOKEN",
                         "type": "VARCHAR",
-                        "length": "512",
+                        "length": "1024",
                         "primaryKey": "false",
                         "identity": "false",
                         "precision": "",
