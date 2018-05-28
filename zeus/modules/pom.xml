@@ -5,13 +5,13 @@
 
 	<parent>
 		<groupId>io.dirigible.zeus</groupId>
-		<artifactId>parent</artifactId>
+		<artifactId>zeus-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<name>Zeus - Modules</name>
-	<artifactId>modules</artifactId>
+	<artifactId>zeus-modules</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 

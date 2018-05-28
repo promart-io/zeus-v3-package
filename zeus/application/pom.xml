@@ -5,13 +5,13 @@
 
 	<parent>
 		<groupId>io.dirigible.zeus</groupId>
-		<artifactId>parent</artifactId>
+		<artifactId>zeus-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<name>Zeus</name>
-	<artifactId>application</artifactId>
+	<artifactId>zeus-application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
@@ -76,32 +76,32 @@
 		<!-- Application - Zeus -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>core</artifactId>
+			<artifactId>zeus-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>data</artifactId>
+			<artifactId>zeus-data</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>applications</artifactId>
+			<artifactId>zeus-applications</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>templates</artifactId>
+			<artifactId>zeus-templates</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>accounts</artifactId>
+			<artifactId>zeus-accounts</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>client-kubernetes</artifactId>
+			<artifactId>zeus-client-kubernetes</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

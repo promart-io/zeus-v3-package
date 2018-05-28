@@ -11,7 +11,7 @@
 	<name>Zeus - Parent</name>
 	<description>Zeus Parent</description>
 	<groupId>io.dirigible.zeus</groupId>
-	<artifactId>parent</artifactId>
+	<artifactId>zeus-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
