@@ -34,7 +34,8 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: dirigible
-          image: dirigiblelabs/zeus
+          image: zeus
+          imagePullPolicy: Never
           ports:
             - containerPort: 8080
               name: zeus
