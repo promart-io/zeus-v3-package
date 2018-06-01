@@ -24,6 +24,7 @@
 	<modules>
 		<module>core</module>
 		<module>data</module>
+		<module>data/playbook</module>
 		<module>applications</module>
 		<module>templates</module>
 		<module>accounts</module>
