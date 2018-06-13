@@ -29,8 +29,8 @@
 		<content.repository.name>zeus-v3-data-playbook</content.repository.name>
 		<content.project.name>zeus-data-playbook</content.project.name>
 
-		<content.scm.url>https://github.com/dirigiblelabs/${content.repository.name}</content.scm.url>
-		<content.scm.connection>scm:git:git://github.com/dirigiblelabs/${content.repository.name}.git</content.scm.connection>
-		<content.scm.developerConnection>scm:git:https://github.com/dirigiblelabs/${content.repository.name}</content.scm.developerConnection>
+		<content.scm.url>https://github.com/promart-io/${content.repository.name}</content.scm.url>
+		<content.scm.connection>scm:git:git://github.com/promart-io/${content.repository.name}.git</content.scm.connection>
+		<content.scm.developerConnection>scm:git:https://github.com/promart-io/${content.repository.name}</content.scm.developerConnection>
 	</properties>
 </project>

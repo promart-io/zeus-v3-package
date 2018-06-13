@@ -1,6 +1,7 @@
 1001|Keycloak
 1002|Eclipse Dirigible
 1003|Eclipse Dirigible - Keycloak
-1004|Redis - Master
-1005|Redis - Slave
-1006|Guestbook
+1004|PostgreSQL
+1005|PostgreSQL - Keycloak
+1006|PostgreSQL - ProMART
+1007|ProMART
