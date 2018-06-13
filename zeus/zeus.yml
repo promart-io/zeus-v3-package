@@ -33,33 +33,14 @@ spec:
     spec:
       terminationGracePeriodSeconds: 10
       containers:
-        - name: dirigible
-          image: dirigiblelabs/zeus
+        - name: zeus
+          image: promartio/zeus
           ports:
             - containerPort: 8080
               name: zeus
           volumeMounts:
             - name: root
               mountPath: /usr/local/tomcat/dirigible
-          env:
-            - name: localRepositoryRootFolder
-              value: /usr/local/tomcat/dirigible/repository
-            - name: localRepositoryRootFolderIsAbsolute
-              value: "true"
-            - name: localDatabaseRootFolder
-              value: /usr/local/tomcat/dirigible/derby
-            - name: localCmisRootFolder
-              value: /usr/local/tomcat/dirigible/cmis
-            - name: initLoggingDirectory
-              value: /tomcat/logs
-            - name: repositoryProviderMaster
-              value: git
-            - name: masterRepositoryGitTarget
-              value: master_git_repository
-            - name: masterRepositoryGitLocation
-              value: https://github.com/dirigiblelabs/zeus_setup.git
-            - name: masterRepositoryGitBranch
-              value: origin/master
       serviceAccountName: zeus
   volumeClaimTemplates:
     - metadata:
@@ -79,7 +60,7 @@ metadata:
   namespace: zeus
 spec:
   rules:
-    - host: zeus.apps.eu-central-1.sap.onvms.com
+    - host: platform.ingress.promart.promart.shoot.canary.k8s-hana.ondemand.com
       http:
         paths:
           - path: /
