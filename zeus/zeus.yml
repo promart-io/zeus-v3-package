@@ -60,7 +60,7 @@ metadata:
   namespace: zeus
 spec:
   rules:
-    - host: platform.ingress.promart.promart.shoot.canary.k8s-hana.ondemand.com
+    - host: zeus.ingress.dev.promart.shoot.canary.k8s-hana.ondemand.com
       http:
         paths:
           - path: /
