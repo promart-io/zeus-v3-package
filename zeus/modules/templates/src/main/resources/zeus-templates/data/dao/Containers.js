@@ -4,35 +4,31 @@ var dao = daoApi.create({
 	'table': 'ZEUS_CONTAINERS',
 	'properties': [
 		{
-			'name':  'Id',
-			'column': 'ZC_ID',
-			'type':'INTEGER',
+			'name': 'Id',
+			'column': 'CONTAINER_ID',
+			'type': 'INTEGER',
 			'id': true,
-			'required': false
-		},		{
-			'name':  'Name',
-			'column': 'ZC_NAME',
-			'type':'VARCHAR',
-			'id': false,
-			'required': false
-		},		{
-			'name':  'Image',
-			'column': 'ZC_IMAGE',
-			'type':'VARCHAR',
-			'id': false,
-			'required': false
-		},		{
-			'name':  'Protocol',
-			'column': 'ZC_PROTOCOL',
-			'type':'INTEGER',
-			'id': false,
-			'required': false
-		},		{
-			'name':  'Port',
-			'column': 'ZC_PORT',
-			'type':'INTEGER',
-			'id': false,
-			'required': false
+			'required': true
+		}, {
+			'name': 'Name',
+			'column': 'CONTAINER_NAME',
+			'type': 'VARCHAR',
+			'required': true
+		}, {
+			'name': 'Image',
+			'column': 'CONTAINER_IMAGE',
+			'type': 'VARCHAR',
+			'required': true
+		}, {
+			'name': 'Protocol',
+			'column': 'CONTAINER_PROTOCOL',
+			'type': 'INTEGER',
+			'required': true
+		}, {
+			'name': 'Port',
+			'column': 'CONTAINER_PORT',
+			'type': 'INTEGER',
+			'required': true
 		}]
 });
 exports.list = function(settings) {

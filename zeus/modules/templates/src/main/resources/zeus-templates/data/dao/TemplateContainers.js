@@ -4,23 +4,21 @@ var dao = daoApi.create({
 	'table': 'ZEUS_TEMPLATE_CONTAINERS',
 	'properties': [
 		{
-			'name':  'Id',
-			'column': 'ZTC_ID',
-			'type':'INTEGER',
+			'name': 'Id',
+			'column': 'TEMPLATE_CONTAINER_ID',
+			'type': 'INTEGER',
 			'id': true,
-			'required': false
-		},		{
-			'name':  'Template',
-			'column': 'ZTC_TEMPLATE',
-			'type':'INTEGER',
-			'id': false,
-			'required': false
-		},		{
-			'name':  'Container',
+			'required': true
+		}, {
+			'name': 'Template',
+			'column': 'TEMPLATE_CONTAINER_TEMPLATE',
+			'type': 'INTEGER',
+			'required': true
+		}, {
+			'name': 'Container',
 			'column': 'ZTC_CONTAINER',
-			'type':'INTEGER',
-			'id': false,
-			'required': false
+			'type': 'INTEGER',
+			'required': true
 		}]
 });
 exports.list = function(settings) {

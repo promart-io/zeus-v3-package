@@ -4,35 +4,30 @@ var dao = daoApi.create({
 	'table': 'ZEUS_TEMPLATES',
 	'properties': [
 		{
-			'name':  'Id',
-			'column': 'ZT_ID',
-			'type':'INTEGER',
+			'name': 'Id',
+			'column': 'TEMPLATE_ID',
+			'type': 'INTEGER',
 			'id': true,
-			'required': false
-		},		{
-			'name':  'Name',
-			'column': 'ZT_NAME',
-			'type':'VARCHAR',
-			'id': false,
-			'required': false
-		},		{
-			'name':  'IsStateful',
-			'column': 'ZT_IS_STATEFUL',
-			'type':'BOOLEAN',
-			'id': false,
-			'required': false
-		},		{
-			'name':  'Replicas',
-			'column': 'ZT_REPLICAS',
-			'type':'INTEGER',
-			'id': false,
-			'required': false
-		},		{
-			'name':  'MountPath',
-			'column': 'ZT_MOUNT_PATH',
-			'type':'VARCHAR',
-			'id': false,
-			'required': false
+			'required': true
+		}, {
+			'name': 'Name',
+			'column': 'TEMPLATE_NAME',
+			'type': 'VARCHAR',
+			'required': true
+		}, {
+			'name': 'IsStateful',
+			'column': 'TEMPLATE_IS_STATEFUL',
+			'type': 'BOOLEAN',
+			'required': true
+		}, {
+			'name': 'Replicas',
+			'column': 'TEMPLATE_REPLICAS',
+			'type': 'INTEGER',
+			'required': true
+		}, {
+			'name': 'MountPath',
+			'column': 'TEMPLATE_MOUNT_PATH',
+			'type': 'VARCHAR',
 		}]
 });
 exports.list = function(settings) {

@@ -4,35 +4,31 @@ var dao = daoApi.create({
 	'table': 'ZEUS_TEMPLATE_SERVICES',
 	'properties': [
 		{
-			'name':  'Id',
-			'column': 'ZTS_ID',
-			'type':'INTEGER',
+			'name': 'Id',
+			'column': 'TEMPLATE_SERVICE_ID',
+			'type': 'INTEGER',
 			'id': true,
-			'required': false
-		},		{
-			'name':  'Name',
-			'column': 'ZTS_NAME',
-			'type':'VARCHAR',
-			'id': false,
-			'required': false
-		},		{
-			'name':  'Type',
-			'column': 'ZTS_TYPE',
-			'type':'INTEGER',
-			'id': false,
-			'required': false
-		},		{
-			'name':  'Port',
-			'column': 'ZTS_PORT',
-			'type':'INTEGER',
-			'id': false,
-			'required': false
-		},		{
-			'name':  'Template',
-			'column': 'ZTS_TEMPLATE',
-			'type':'INTEGER',
-			'id': false,
-			'required': false
+			'required': true
+		}, {
+			'name': 'Name',
+			'column': 'TEMPLATE_SERVICE_NAME',
+			'type': 'VARCHAR',
+			'required': true
+		}, {
+			'name': 'Type',
+			'column': 'TEMPLATE_SERVICE_TYPE',
+			'type': 'INTEGER',
+			'required': true
+		}, {
+			'name': 'Port',
+			'column': 'TEMPLATE_SERVICE_PORT',
+			'type': 'INTEGER',
+			'required': true
+		}, {
+			'name': 'Template',
+			'column': 'TEMPLATE_SERVICE_TEMPLATE',
+			'type': 'INTEGER',
+			'required': true
 		}]
 });
 exports.list = function(settings) {
