@@ -41,7 +41,7 @@ spec:
           volumeMounts:
             - name: root
               mountPath: /usr/local/tomcat/dirigible
-      serviceAccountName: zeus
+      serviceAccountName: service-account
   volumeClaimTemplates:
     - metadata:
         name: root
@@ -71,7 +71,7 @@ spec:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: zeus
+  name: service-account
   namespace: zeus
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -100,5 +100,5 @@ roleRef:
   name: zeus
 subjects:
   - kind: ServiceAccount
-    name: zeus
+    name: service-account
     namespace: zeus
