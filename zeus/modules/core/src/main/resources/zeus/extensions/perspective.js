@@ -11,8 +11,8 @@
 exports.getPerspective = function() {
 	return {
 		'name': 'Home',
+		'image': 'home',
 		'link': '/services/v3/web/zeus/index.html',
-		'order': '0',
-		'image': 'home'
+		'order': 0
 	};
 };
