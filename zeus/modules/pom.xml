@@ -21,6 +21,7 @@
 
    <modules>
       <module>core</module>
+      <module>code</module>
       <module>data</module>
       <module>data/playbook</module>
       <module>applications</module>
