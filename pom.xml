@@ -35,8 +35,7 @@
 	</scm>
 
 	<modules>
-		<module>modules</module>
-		<module>application</module>
+		<module>zeus/modules</module>
 	</modules>
 
 	<properties>

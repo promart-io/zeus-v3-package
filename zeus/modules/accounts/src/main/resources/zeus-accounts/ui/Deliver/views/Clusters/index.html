@@ -7,9 +7,9 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link type="text/css" rel="stylesheet" href="/services/v3/core/theme/bootstrap.min.css">
-	<link type="text/css" rel="stylesheet" href="/services/v3/web/resources/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link type="image/png" rel="shortcut icon" href="/services/v3/web/resources/images/favicon.png" />
+	<link type="text/css" rel="stylesheet" href="../../../../../../../../services/v3/core/theme/bootstrap.min.css">
+	<link type="text/css" rel="stylesheet" href="../../../../../../../../services/v3/web/resources/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link type="image/png" rel="shortcut icon" href="../../../../../../../../services/v3/web/resources/images/favicon.png" />
 </head>
 
 <body ng-controller="PageController">
@@ -23,8 +23,8 @@
 				<tr>
 					<th>#</th>
 					<th class="text-capitalize">Name</th>
-					<th class="text-capitalize">URL</th>
 					<th class="text-capitalize">Account</th>
+					<th class="text-capitalize">Default</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -32,8 +32,8 @@
 				<tr ng-repeat="next in data">
 					<td>{{(dataPage - 1) * dataLimit + $index + 1}}</td>
 					<td>{{next.Name}}</td>
-					<td>{{next.URL}}</td>
 					<td>{{accountOptionValue(next.Account)}}</td>
+					<td><input type="checkbox" ng-model="next.IsDefault" disabled></td>
 					<td>
 						<i class="close fa fa-remove" ng-click="openDeleteDialog(next)" style="font-size: 1.4em"></i>
 						<i class="close fa fa-bars" ng-click="openEditDialog(next)" style="margin-right: 0.5em; font-size: 1.4em"></i>					</td>
@@ -60,8 +60,12 @@
 							<input type="text" class="form-control" placeholder="Enter name" ng-model="entity.Name">
 						</div>
 						<div class="form-group">
-							<label>URL</label>
-							<input type="text" class="form-control" placeholder="Enter url" ng-model="entity.URL">
+							<label>API</label>
+							<input type="text" class="form-control" placeholder="Enter api" ng-model="entity.API">
+						</div>
+						<div class="form-group">
+							<label>Ingress</label>
+							<input type="text" class="form-control" placeholder="Enter ingress" ng-model="entity.Ingress">
 						</div>
 						<div class="form-group">
 							<label>Token</label>
@@ -70,6 +74,10 @@
 						<div class="form-group">
 							<label>Account</label>
 							<select class="form-control" ng-options="o.Id as o.Name for o in accountOptions" ng-model="entity.Account"></select>
+						</div>
+						<div class="form-group">
+							<label>Default</label>
+							<input type="checkbox" ng-model="entity.IsDefault">
 						</div>
 					</form>
 					<div ng-show="actionType === 'delete'">
@@ -103,11 +111,11 @@
 	    </ul>
 	</nav>
 
-	<script type="text/javascript" src="/services/v3/web/resources/jquery/2.0.3/jquery.min.js"></script>
-	<script type="text/javascript" src="/services/v3/web/resources/bootstrap/3.3.7/bootstrap.min.js" async></script>
-	<script type="text/javascript" src="/services/v3/web/resources/angular/1.4.7/angular.min.js"></script>
-	<script type="text/javascript" src="/services/v3/web/resources/angular/1.4.7/angular-resource.min.js"></script>
-	<script type="text/javascript" src="/services/v3/web/zeus/resources/js/message-hub.js"></script>
+	<script type="text/javascript" src="../../../../../../../../services/v3/web/resources/jquery/2.0.3/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../../../../../../services/v3/web/resources/bootstrap/3.3.7/bootstrap.min.js" async></script>
+	<script type="text/javascript" src="../../../../../../../../services/v3/web/resources/angular/1.4.7/angular.min.js"></script>
+	<script type="text/javascript" src="../../../../../../../../services/v3/web/resources/angular/1.4.7/angular-resource.min.js"></script>
+	<script type="text/javascript" src="../../../../../../../../services/v3/web/zeus/ui/resources/js/message-hub.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js"></script>
 	<script type="text/javascript" src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
 

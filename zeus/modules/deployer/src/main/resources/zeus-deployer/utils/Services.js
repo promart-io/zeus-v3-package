@@ -1,41 +1,34 @@
-var ServicesApi = require('kubernetes/api/v1/Services');
-var DeploymentDao = require('zeus-deployer/data/dao/Deployments');
+var dao = require('zeus-deployer/data/dao/Deployments');
+var api = require('zeus-deployer/utils/resources/Services');
 
-exports.create = function(server, token, namespace, template, applicationName) {
-	var result = [];
-	var services = DeploymentDao.getServices(template.id);
-
-	for (var i = 0 ; i < services.length; i ++) {
-		var api = new ServicesApi(server, token, namespace);
-	
-		var builder = api.getEntityBuilder();
-	
-		builder.getMetadata().setNamespace(namespace);
-	
-		builder.getMetadata().setName(applicationName + '-' + services[i].name);
-		builder.getMetadata().setLabels({
-			'zeus-application': applicationName
+exports.create = function(server, token, namespace, template, name) {
+	var services = [];
+	var templateServices = dao.getServices(template.id);
+	for (var i = 0 ; i < templateServices.length ; i ++ ) {
+		var entity = api.build({
+			'name': name + '-' + templateServices[i].name,
+			'namespace': namespace,
+			'application': name,
+			'type': getServiceType(templateServices[i].type),
+			'port': templateServices[i].port
 		});
-	
-		builder.getSpec().setType(services[i].type);
-		builder.getSpec().addPort({
-			'port': services[i].port
-		});
-		
-		var entity = builder.build();
-		result.push(api.create(entity));
+		var service = api.create(server, token, namespace, entity);
+		services.push(service);
 	}
-	return result;
+	return services;
 };
 
-exports.delete = function(server, token, namespace, templateId, applicationName) {
-	var result = [];
-	var services = DeploymentDao.getServices(templateId);
+exports.delete = function(server, token, namespace, templateId, name) {
+    var result = [];
+	var services = dao.getServices(templateId);
 
 	for (var i = 0 ; i < services.length; i ++) {
-		var api = new ServicesApi(server, token, namespace);
-		var service = api.delete(applicationName + '-' + services[i].name);
+		var service = api.delete(server, token, namespace, name + '-' + services[i].name);
 		result.push(service);
 	}
 	return result;
 };
+
+function getServiceType(type) {
+	return type === "Ingress" ? "ClusterIP" : type;
+}

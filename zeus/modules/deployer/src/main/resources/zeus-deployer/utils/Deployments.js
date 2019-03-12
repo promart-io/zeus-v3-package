@@ -1,47 +1,37 @@
-var DeploymentsApi = require('kubernetes/apis/apps/v1/Deployments');
-var DeploymentDao = require('zeus-deployer/data/dao/Deployments');
+var dao = require('zeus-deployer/data/dao/Deployments');
+var api = require('zeus-deployer/utils/resources/Deployments');
 
-exports.create = function(server, token, namespace, template, applicationName) {
-	var api = new DeploymentsApi(server, token, namespace);
+exports.create = function(server, token, namespace, template, name) {
+	var containers = dao.getContainers(template.id);
+	var env = dao.getVariables(template.id);
 
-	var builder = api.getEntityBuilder();
-	builder.getMetadata().setNamespace(namespace);
-
-	builder.getMetadata().setName(applicationName);
-	builder.getMetadata().setLabels({
-		'zeus-application': applicationName
-	});
-
-	builder.getSpec().setReplicas(template.replicas);
-	addContainers(builder, template);
-	
-	var entity = builder.build();
-	return api.create(entity);
-};
-
-exports.delete = function(server, token, namespace, applicationName) {
-	var api = new DeploymentsApi(server, token, namespace);
-	return api.delete(applicationName);
-};
-
-function addContainers(builder, template) {
-	var containers = DeploymentDao.getContainers(template.id);
-	var env = DeploymentDao.getVariables(template.id);
-	for (var i = 0 ; i < containers.length; i ++) {
-		var container = {
-			'name': containers[i].name,
-			'image': containers[i].image,
-			'ports': [{
-				'containerPort': containers[i].port
-			}],
-			'env': []
-		};
-		for (var j = 0; j < env.length; j ++) {
-			container.env.push({
-				'name': env[j].name,
-				'value': env[j].value
-			});
-		}
-		builder.getSpec().getTemplate().getSpec().addContainer(container);
+	var entity = {
+		'name': name,
+        'namespace': namespace,
+        'application': name,
+        'replicas': template.replicas,
+		'containers': []
 	}
+	for (var i = 0 ; i < containers.length; i ++) {
+		containers[i].env = env;
+		entity.containers.push(buildContainer(containers[i]));
+	}
+	var deployment = api.build(entity)
+	return api.create(server, token, namespace, deployment);
+};
+
+exports.delete = function(server, token, namespace, name) {
+    return api.delete(server, token, namespace, name);
+};
+
+function buildContainer(entity) {
+	var container = {
+		'name': entity.name,
+		'image': entity.image,
+		'ports': [{
+			'containerPort': entity.port
+		}],
+		'env': entity.env
+	};
+	return container;
 }

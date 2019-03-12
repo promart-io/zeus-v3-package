@@ -71,7 +71,7 @@ angular.module('ideUiCore', ['ngResource'])
 		get: function(){
 			var user = {};
 			$http({
-				url: '/services/v3/js/ide/services/user-name.js',
+				url: '/services/v3/js/ide-core/services/user-name.js',
 				method: 'GET'
 			}).success(function(data){
 				user.name = data;
@@ -161,7 +161,7 @@ angular.module('ideUiCore', ['ngResource'])
 			};
 			scope.user = User.get();
 		},
-		templateUrl: '/services/v3/web/zeus/resources/templates/menu.html'
+		templateUrl: '/services/v3/web/zeus/ui/resources/templates/menu.html'
 	}
 }])
 .directive('sidebar', ['Perspectives', function(Perspectives){
@@ -181,7 +181,7 @@ angular.module('ideUiCore', ['ngResource'])
 				scope.activePerspective = activePerspective;
 			};
 		},
-		templateUrl: '/services/v3/web/zeus/resources/templates/sidebar.html'
+		templateUrl: '/services/v3/web/zeus/ui/resources/templates/sidebar.html'
 	}
 }])
 .directive('tiles', ['Tiles', function(Tiles){
@@ -195,7 +195,7 @@ angular.module('ideUiCore', ['ngResource'])
 		link: function(scope, el, attrs){
 			scope.tiles= Tiles.query();
 		},
-		templateUrl: '/services/v3/web/zeus/resources/templates/tiles.html'
+		templateUrl: '/services/v3/web/zeus/ui/resources/templates/tiles.html'
 	}
 }])
 .directive('statusBar', ['messageHub', function(messageHub){

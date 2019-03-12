@@ -1,43 +1,34 @@
-var IngressesApi = require('kubernetes/apis/extensions/v1beta1/Ingresses');
-var DeploymentDao = require('zeus-deployer/data/dao/Deployments');
+var dao = require('zeus-deployer/data/dao/Deployments');
+var api = require('zeus-deployer/utils/resources/Ingresses');
 
-exports.create = function(server, token, namespace, template, applicationName) {
-	var result = [];
-	var services = DeploymentDao.getServices(template.id);
-
+exports.create = function(server, token, namespace, template, name, ingressHost) {
+	var ingresses = [];
+	var services = dao.getServices(template.id);
 	for (var i = 0 ; i < services.length; i ++) {
 		if (isIngress(services[i])) {
-			var api = new IngressesApi(server, token, namespace);
-		
-			var builder = api.getEntityBuilder();
-		
-			builder.getMetadata().setNamespace(namespace);
-		
-			builder.getMetadata().setName(applicationName + '-' + services[i].name);
-			builder.getMetadata().setLabels({
-				'zeus-application': applicationName
+			var entity = api.build({
+				'name': name + '-' + services[i].name,
+				'namespace': namespace,
+				'application': name,
+				'host': name + '.' + ingressHost,
+				'path': services[i].path,
+				'serviceName': name + '-' + services[i].name,
+				'servicePort': services[i].port
 			});
-		
-			builder.getSpec().setHost(services[i].host);
-			builder.getSpec().setPath(services[i].path);
-			builder.getSpec().setServiceName(applicationName + '-' + services[i].name);
-			builder.getSpec().setServicePort(services[i].port);
-			
-			var entity = builder.build();
-			result.push(api.create(entity));
+			var ingress = api.create(server, token, namespace, entity);
+			ingresses.push(ingress);
 		}
 	}
-	return result;
+	return ingresses;
 };
 
 exports.delete = function(server, token, namespace, templateId, applicationName) {
 	var result = [];
-	var services = DeploymentDao.getServices(templateId);
+	var services = dao.getServices(templateId);
 
 	for (var i = 0 ; i < services.length; i ++) {
 		if (isIngress(services[i])) {
-			var api = new IngressesApi(server, token, namespace);
-			var ingress = api.delete(applicationName + '-' + services[i].name);
+			var ingress = api.delete(server, token, namespace, applicationName + '-' + services[i].name);
 			result.push(ingress);
 		}
 	}
@@ -45,5 +36,5 @@ exports.delete = function(server, token, namespace, templateId, applicationName)
 };
 
 function isIngress(service) {
-	return service.host !== null && service.path !== null;
+	return service.type === "Ingress";
 }
